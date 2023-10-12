@@ -1,6 +1,6 @@
 #include "Wire.h"
 #include "LiquidCrystal_I2C.h"
-#define SensorPin D0
+#define SensorPin A0
 
 //#include "DHT.h" 
 //#define PinSensor    // Pin digital al que se conecta el sensor
@@ -44,15 +44,17 @@ void loop() {
   if(sensorValue == 0.0){
     digitalWrite(relay1, HIGH);
     digitalWrite(relay2, LOW);
-    state = "seca";
+    state = "humeda";
   }else{
     digitalWrite(relay1, LOW);
     digitalWrite(relay2, HIGH);
-    state = "humedo";
+    state = "seca";
   }
   lcd.setCursor(2, 0);
   lcd.print("Planta "+state);
-  delay(2000);
+  lcd.setCursor(2, 1);
+  lcd.print("Humedad: "+String(sensorValue));
+  delay(500);
   /*
   delay(5000);   
   float humedad = dht.readHumidity();
