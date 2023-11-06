@@ -16,11 +16,11 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 int relay1 = D3; // for ESP8266 microcontroller
 int relay2 = D4;
 
-const char* ssid = "Redmi 9C";
-const char* password = "012345678";
+//const char* ssid = "Redmi 9C";
+//const char* password = "012345678";
 
-//const char* ssid = "Zeroora";
-//const char* password = "notieneclave";
+const char* ssid = "Zeroora";
+const char* password = "notieneclave";
 
 const char* host = "djxmmx.net";
 const uint16_t port = 17;
