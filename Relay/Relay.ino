@@ -1,6 +1,6 @@
 #include "Wire.h"
 #include "LiquidCrystal_I2C.h"
-#define SensorPin D0
+#define SensorPin A0
 
 //#include "DHT.h" 
 //#define PinSensor    // Pin digital al que se conecta el sensor
@@ -16,11 +16,8 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 int relay1 = D3; // for ESP8266 microcontroller
 int relay2 = D4;
 
-const char* ssid = "Redmi 9C";
-const char* password = "012345678";
-
-//const char* ssid = "Zeroora";
-//const char* password = "notieneclave";
+const char* ssid = "Zeroora";
+const char* password = "************";
 
 const char* host = "djxmmx.net";
 const uint16_t port = 17;
@@ -30,6 +27,8 @@ String state = "";
 //DHT dht(PinSensor, Tipo);
 void setup() {
   Serial.begin(9600);
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
   lcd.init();
   lcd.backlight();
   pinMode(relay1, OUTPUT);
