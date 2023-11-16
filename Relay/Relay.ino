@@ -16,8 +16,16 @@ LiquidCrystal_I2C lcd(0x27, 16, 2);
 int relay1 = D3; // for ESP8266 microcontroller
 int relay2 = D4;
 
+<<<<<<< HEAD
 const char* ssid = "Zeroora";
 const char* password = "************";
+=======
+//const char* ssid = "Redmi 9C";
+//const char* password = "012345678";
+
+const char* ssid = "Zeroora";
+const char* password = "notieneclave";
+>>>>>>> 4e3fc3cae0c5be65f988848bc5e527717ac5c97f
 
 const char* host = "djxmmx.net";
 const uint16_t port = 17;
@@ -43,15 +51,17 @@ void loop() {
   if(sensorValue == 0.0){
     digitalWrite(relay1, HIGH);
     digitalWrite(relay2, LOW);
-    state = "seca";
+    state = "humeda";
   }else{
     digitalWrite(relay1, LOW);
     digitalWrite(relay2, HIGH);
-    state = "humedo";
+    state = "seca";
   }
   lcd.setCursor(2, 0);
   lcd.print("Planta "+state);
-  delay(2000);
+  lcd.setCursor(2, 1);
+  lcd.print("Humedad: "+String(sensorValue));
+  delay(500);
   /*
   delay(5000);   
   float humedad = dht.readHumidity();
